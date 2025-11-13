@@ -1,0 +1,22 @@
+<div class="sidebar-aside  vh-100 overflow-auto">
+  <ul class="list-unstyled">
+    <li *ngFor="let item of sidebarData; let i = index" class=" sidebar-titles">
+      <div class="sidebar-item d-flex align-items-center gap-2 py-3 px-3" (click)="toggleOptions(i)"
+        style="cursor: pointer;">
+        <i [class]="item.icon"></i>
+        <span>{{ item.title }}</span>
+        <i class="ms-auto bi" [ngClass]="{'bi-chevron-down': openIndex === i, 'bi-chevron-right': openIndex !== i}">
+        </i>
+      </div>
+
+      <ul class="list-unstyled ms-4" *ngIf="item.options?.length && openIndex === i">
+        <li *ngFor="let option of item.options" (click)="closeMobileBar()" class="sidebar-options-mobile">
+          <a [routerLink]="option.url">{{ option.name }}</a>
+        </li>
+        <li *ngFor="let option of item.options" class="sidebar-options">
+          <a [routerLink]="option.url">{{ option.name }}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,41 @@
+.custom-filter {
+    background-color: #3366ff14;
+    color: #2563eb;
+    border: 1px solid #36f;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.custom-filter:hover {
+    background-color: #3366ff29;
+    color: #36f;
+    border-color: #044be2;
+}
+
+.custom-add {
+    background-color: #00d68f14;
+    color: #00d68f;
+    border: 1px solid #00d68f;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.custom-add:hover {
+    background-color: #00d68f29;
+    border-color: #15803d;
+    color: #00d68f;
+}

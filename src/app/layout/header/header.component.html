@@ -1,0 +1,62 @@
+<header>
+    <div class="container-fluid">
+        <div class="row py-3 border align-items-center">
+            <div
+                class="col-12 col-md-2 d-flex align-items-center justify-content-center justify-content-md-start gap-1 bg-white header-main">
+                <!-- Desktop -->
+                <button mat-icon-button class="example-icon toggle" (click)="closeToggle()"
+                    aria-label="Example icon-button with menu icon">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <!-- Mobile toggle -->
+                <button mat-icon-button class="example-icon toggle-mobile"
+                    aria-label="Example icon-button with menu icon">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <h4 class="mb-0">Admin Portal</h4>
+            </div>
+
+
+            <div class="col-md-5 d-none d-md-block header-hide">
+                <input type="text" class="form-control" placeholder="Search...">
+            </div>
+
+            <div class="col-lg-2 d-none d-md-flex align-items-center info-mail justify-content-center header-hide">
+                <span class="d-flex gap-2 align-items-center">
+                    <i class="bi bi-envelope h6 mt-2"></i>
+                    <span>CONTACT&#64;INFOTCH.IO</span>
+                </span>
+            </div>
+
+
+
+            <div class="col-lg-2 col-md-3 d-none d-md-block header-hide">
+                <ul class="list-unstyled d-flex align-items-center justify-content-end gap-3 mb-0">
+                    <li class="icons-list">
+                        <button class="btn text-gray" aria-label="Search">
+                            <i class="bi h5 bi-search"></i>
+                        </button>
+                    </li>
+                    <li class="icons-list">
+                        <button class="btn text-gray" aria-label="Messages">
+                            <i class="bi h5 bi-envelope"></i>
+                        </button>
+                    </li>
+                    <li class="icons-list">
+                        <button class="btn text-gray" aria-label="Notifications">
+                            <i class="bi h5 bi-bell"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Avatar -->
+            <div class="col-lg-1 col-md-2 d-none d-md-flex justify-content-md-end justify-content-lg-start align-items-center header-hide">
+                <div role="button" class="d-flex justify-content-center align-items-center gap-2">
+                    <p-avatar image="./assets/images/amyelsner.png" class="mr-2" shape="circle"></p-avatar>
+                    <span class="avator-name">Admin</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,51 @@
+.sidebar-item:hover {
+    color: #36f;
+}
+
+.sidebar-aside ul li a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+}
+
+.sidebar-aside ul li :hover {
+    color: #36f;
+}
+
+.sidebar-item i {
+    color: #95aad3;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.sidebar-item span {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.sidebar-options {
+    border-bottom: 0.8px solid rgb(241, 241, 241);
+    padding: 6px 20px;
+}
+
+.toggle-icon{
+    font-size: 25px !important;
+}
+
+.sidebar-titles {
+    border-bottom: 0.8px solid rgb(241, 241, 241);
+    position: relative;
+}
+
+.child-options {
+    position: absolute;
+    background-color: white;
+    z-index: 100;
+    top: 10px;
+    left: 90px;
+    margin-left: 10px;
+    box-shadow: 0.4px 0.4px 4px rgb(219, 219, 219);
+    border-radius: 4px;
+}
+
