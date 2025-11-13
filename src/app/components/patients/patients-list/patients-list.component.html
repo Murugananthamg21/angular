@@ -1,0 +1,153 @@
+<div class="container-fluid">
+    <div class="row d-flex align-items-center mt-1">
+        <div class="col-md-6">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb d-flex align-items-center">
+                    <li class="breadcrumb-item"><a [routerLink]="'/patients'">Home</a></li>
+                    <li class="breadcrumb-item"><a [routerLink]="'/patients'">Patients</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">All Patients</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center justify-content-md-end">
+            <button class="custom-filter me-2" (click)="openFilter()">
+                <i class="bi bi-funnel"></i> FILTER
+            </button>
+            <button class="custom-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <i class="bi bi-plus-lg"></i> Add Patient
+            </button>
+        </div>
+    </div>
+    <div class="row mt-4 filter-card-row" [@filter_slide] *ngIf="filterOpen">
+        <div class="col-12">
+            <div class="card filter-card py-4 px-4">
+                <div class="row gy-3">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Patient Id">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Mobile Number">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" placeholder="Date">
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3">
+                        <div class="col d-flex justify-content-end">
+                            <button class="custom-add me-2">Search</button>
+                            <button class="custom-filter">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card table-responsive">
+                <div class="mat-elevation-z8 table-container">
+                    <div class="table-wrapper">
+                        <table mat-table [dataSource]="dataSource">
+
+                            <ng-container matColumnDef="patientId">
+                                <th mat-header-cell *matHeaderCellDef> Patient Id </th>
+                                <td mat-cell *matCellDef="let element"> {{element.patientId}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef> Name. </th>
+                                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="email">
+                                <th mat-header-cell *matHeaderCellDef> Email </th>
+                                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="mobile">
+                                <th mat-header-cell *matHeaderCellDef> Mobile Number </th>
+                                <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="date">
+                                <th mat-header-cell *matHeaderCellDef> Created Date </th>
+                                <td mat-cell *matCellDef="let element"> {{element.date | date:'MM/dd/yyyy' }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="address">
+                                <th mat-header-cell *matHeaderCellDef> Address </th>
+                                <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                    </div>
+                    <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons
+                        aria-label="Select page of periodic elements">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Patients</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row gy-3">
+                        <div class="col-4">
+                            <label for="name">Name</label>
+                            <input type="text" formControlName="name" id="name" class="form-control mt-1">
+                            <span *ngIf="!patientForm.get('name')?.valid && patientForm.get('name')?.touched"
+                                class="text-danger">Name is required</span>
+                        </div>
+                        <div class="col-4">
+                            <label for="email">Email</label>
+                            <input type="text" formControlName="email" id="email" class="form-control mt-1">
+                            <span *ngIf="!patientForm.get('email')?.valid && patientForm.get('email')?.touched"
+                                class="text-danger">Email is required</span>
+                        </div>
+                        <div class="col-4">
+                            <label for="PatientId">Patient Id</label>
+                            <input type="text" formControlName="patientId" id="PatientId" class="form-control mt-1">
+                            <span *ngIf="!patientForm.get('patientId')?.valid && patientForm.get('patientId')?.touched"
+                                class="text-danger">PatientId is required</span>
+                        </div>
+                        <div class="col-4">
+                            <label for="mobile">Mobile Number</label>
+                            <input type="text" formControlName="mobile" id="mobile" class="form-control mt-1">
+                            <span *ngIf="!patientForm.get('mobile')?.valid && patientForm.get('mobile')?.touched"
+                                class="text-danger">Mobile is required</span>
+                        </div>
+                        <div class="col-4">
+                            <label for="address">Address</label>
+                            <input type="text" formControlName="address" id="address" class="form-control mt-1">
+                            <span *ngIf="!patientForm.get('address')?.valid && patientForm.get('address')?.touched"
+                                class="text-danger">Address is required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="custom-add me-2" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="custom-filter">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

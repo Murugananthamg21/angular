@@ -1,0 +1,48 @@
+.sidebar-item:hover {
+    color: #36f;
+}
+
+.sidebar-aside ul li a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+}
+
+.sidebar-aside ul li a:hover {
+    color: #36f;
+}
+
+.sidebar-item i {
+    color: #8f9bb3;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.sidebar-item span {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.sidebar-titles {
+    border-bottom: 0.8px solid rgb(241, 241, 241);
+}
+
+.sidebar-options {
+    border-bottom: 0.8px solid rgb(241, 241, 241);
+    padding: 8px 2px;
+}
+
+.sidebar-options-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sidebar-options-mobile {
+        display: block;
+    }
+
+    .sidebar-options {
+        display: none;
+    }
+}

@@ -1,0 +1,9 @@
+<p>add-patients works!</p>
+<button (click)="toggle()">Click</button>
+<!-- <div *ngIf="isShow()" @fadeIn>
+    <p>Hi, fade-in box</p>
+</div> -->
+
+<div [@slideToggle]="isShow() ? 'open' : 'closed'">
+  Content...
+</div>

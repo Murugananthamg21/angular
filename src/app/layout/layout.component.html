@@ -1,0 +1,28 @@
+<div class="app-layout">
+    <header class="app-header">
+        <app-header></app-header>
+    </header>
+
+    <div class="app-body">
+        <aside *ngIf="toggeleClose" class="app-sidebar ">
+            <app-sidebar></app-sidebar>
+        </aside>
+        <aside *ngIf="!toggeleClose" class="app-toggle-sidebar">
+            <app-toggle-sidebar></app-toggle-sidebar>
+        </aside>
+
+        <div class="app-main">
+            <main class="app-content">
+                <div class="content-wrapper">
+                    <router-outlet></router-outlet>
+                    <!-- <h2>Dashboard Content</h2>
+                    <p>This is where your page content goes.</p> -->
+                </div>
+            </main>
+
+            <footer class="app-footer">
+                <app-footer></app-footer>
+            </footer>
+        </div>
+    </div>
+</div>
