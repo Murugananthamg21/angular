@@ -23,38 +23,64 @@
 
             <div class="col-lg-2 d-none d-md-flex align-items-center info-mail justify-content-center header-hide">
                 <span class="d-flex gap-2 align-items-center">
-                    <i class="bi bi-envelope h6 mt-2"></i>
-                    <span>CONTACT&#64;INFOTCH.IO</span>
                 </span>
             </div>
-
-
-
             <div class="col-lg-2 col-md-3 d-none d-md-block header-hide">
-                <ul class="list-unstyled d-flex align-items-center justify-content-end gap-3 mb-0">
+                <ul class="list-unstyled d-flex align-items-center gap-2 justify-content-end mb-0">
                     <li class="icons-list">
                         <button class="btn text-gray" aria-label="Search">
-                            <i class="bi h5 bi-search"></i>
+                            <i class="bi  bi-search"></i>
                         </button>
                     </li>
                     <li class="icons-list">
                         <button class="btn text-gray" aria-label="Messages">
-                            <i class="bi h5 bi-envelope"></i>
+                            <i class="bi  bi-envelope"></i>
                         </button>
                     </li>
                     <li class="icons-list">
                         <button class="btn text-gray" aria-label="Notifications">
-                            <i class="bi h5 bi-bell"></i>
+                            <i class="bi  bi-bell"></i>
                         </button>
                     </li>
                 </ul>
             </div>
 
             <!-- Avatar -->
-            <div class="col-lg-1 col-md-2 d-none d-md-flex justify-content-md-end justify-content-lg-start align-items-center header-hide">
-                <div role="button" class="d-flex justify-content-center align-items-center gap-2">
-                    <p-avatar image="./assets/images/amyelsner.png" class="mr-2" shape="circle"></p-avatar>
-                    <span class="avator-name">Admin</span>
+            <div
+                class="col-lg-1 col-md-2 d-none d-md-flex justify-content-md-end justify-content-lg-start align-items-center header-hide position-relative">
+                <div role="button" class="d-flex justify-content-center align-items-center gap-2 mt-1 profile-toggle" (click)="showProfile()">
+                    <p-avatar image="./assets/images/amyelsner.png" class="" shape="circle"></p-avatar>
+                    <span class="avator-name">Murugan </span>
+                    <i class="ms-auto bi" [ngClass]="getProfileStatus ? 'bi-chevron-down' : 'bi-chevron-up'">
+                    </i>
+                </div>
+
+                <!-- Profile -->
+                <div class="profile-card card position-absolute" @fadeIn *ngIf="getProfileStatus">
+                    <div class="card-body" role="button">
+                        <span class="profile-name">Muruga nantham</span>
+                        <span class="profile-email">Murugan&#64;outlook.com</span>
+                    </div>
+                    <div class="card-navigation-body card-body">
+                        <a class="d-flex gap-2 align-items-center">
+                            <i class="bi bi-person-circle"></i>
+                            Edit Profile
+                        </a>
+                        <a class="d-flex gap-2 align-items-center">
+                            <i class="bi bi-gear"></i>
+                            Account Settings
+                        </a>
+                        <a class="d-flex gap-2 align-items-center">
+                            <i class="bi bi-exclamation-circle"></i>
+                            Support
+                        </a>
+                        <hr>
+                        <a [routerLink]="'/signup'" class="d-flex gap-2 align-items-center logout ">
+                            <i class="bi bi-box-arrow-right"></i>
+                            Logout
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>

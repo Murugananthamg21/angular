@@ -1,0 +1,39 @@
+.login {
+    margin: 0 !important;
+    font-size: 25px;
+    padding: 0 !important;
+}
+
+.card-top span {
+    display: block;
+    margin-top: 10px;
+}
+
+.card {
+    border: none;
+}
+
+.form-control {
+    font-size: 14px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 20px;
+}
+
+.page_navigate {
+    color: rgb(26, 26, 250);
+    cursor: pointer;
+}
+
+.google-logo {
+    width: 18px;
+    margin-right: 5px;
+}
+
+.continue-btn {
+    border: 0.1px solid rgb(190, 190, 190);
+}
+
+.continue-btn:active {
+    border: 0.1px solid rgb(190, 190, 190);
+}

@@ -21,17 +21,22 @@
 
 .icons-list {
     color: #8f9bb3;
-    border-left: 0.6px solid rgb(233, 231, 231);
-    border-right: 0.6px solid rgb(233, 231, 231);
 }
+
 
 .text-gray {
-    padding: 0 20px;
-    color: #8f9bb3;
+    padding: 6px 11px;
+    background-color: #3366ff29;
+    color: #36f;
+    border-radius: 20px;
 }
 
+
 .text-gray:hover {
-    padding: 0 20px;
+    background-color: #36f;
+    padding: 6px 11px;
+    color: white;
+    box-shadow: 2px 2px 5px #0339db29;
 }
 
 .text-gray:active {
@@ -39,17 +44,62 @@
 }
 
 .avator-name {
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 15px;
+    font-weight: 500;
     color: rgb(82, 81, 81);
+    font-family: "Playwrite HU", cursive;
 }
 
-.toggle-mobile{
+.toggle-mobile {
     display: none;
 }
 
-@media(max-width: 1310px){
-    .info-mail{
+.profile-card {
+    top: 63px;
+    right: 30px;
+    border: none;
+    width: 15rem;
+    border-radius: 10px;
+    box-shadow: 0.4px 0.4px 2px rgb(194, 193, 193);
+}
+
+.card-body span {
+    display: block;
+}
+
+.profile-name {
+    font-family: "Playwrite HU", cursive;
+}
+
+.profile-email {
+    font-size: 12px;
+    font-family: "Playwrite HU", cursive;
+    color: rgb(150, 150, 150);
+}
+
+.card-navigation-body a,
+.card-navigation-body i {
+    font-size: 14px;
+    text-decoration: none;
+    color: rgb(70, 69, 69);
+    font-weight: 500;
+}
+
+.card-navigation-body a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.card-navigation-body a:hover {
+    background-color: #f0f0f0;
+}
+
+
+@media(max-width: 1310px) {
+    .info-mail {
         display: none !important;
     }
 }

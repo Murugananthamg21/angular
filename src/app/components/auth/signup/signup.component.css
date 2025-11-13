@@ -1,0 +1,11 @@
+.forget {
+    color: #36f;
+    cursor: pointer;
+}
+
+.forget:hover {
+    color: #3a76f7;
+}
+
+
+

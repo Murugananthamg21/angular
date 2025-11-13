@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { AfterViewInit, ViewChild } from '@angular/core';
@@ -7,21 +7,22 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { FILTER_SLIDE } from '../../../core/animations/animations';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
+import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-patients-list',
   standalone: true,
-  imports: [RouterLink, MatTableModule, MatPaginatorModule, CommonModule, DatePipe, ReactiveFormsModule],
+  imports: [RouterLink, MatTableModule, MatSortModule, MatPaginatorModule, CommonModule, DatePipe, ReactiveFormsModule],
   templateUrl: './patients-list.component.html',
   styleUrl: './patients-list.component.css',
   encapsulation: ViewEncapsulation.None,
   animations: [FILTER_SLIDE]
 })
-export class PatientsListComponent  {
+export class PatientsListComponent {
   filterOpen = false;
-
   patientForm!: FormGroup;
+  private _liveAnnouncer = inject(LiveAnnouncer);
 
   constructor(private _fb: FormBuilder) {
     this.patientForm = this._fb.group({
@@ -41,12 +42,22 @@ export class PatientsListComponent  {
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
-  onSubmit(){
+   announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
+
+  onSubmit() {
     console.log(this.patientForm.valid);
   }
 

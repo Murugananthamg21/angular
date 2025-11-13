@@ -1,12 +1,14 @@
-<div class="sidebar-aside">
+<div class="sidebar-aside" @SideBarSlide>
   <ul class="list-unstyled">
     <li *ngFor="let item of sidebarData; let i = index" class="sidebar-titles">
-      <div class="sidebar-item text-center py-3 px-3" (click)="toggleOptions(i);  $event.stopPropagation(); " style="cursor: pointer;">
+      <div class="sidebar-item text-center py-3 px-3" [ngClass]="{ 'active-item': activeParentIndex === i }"
+        (click)="toggleOptions(i);  $event.stopPropagation(); " style="cursor: pointer;">
         <i [class]="item.icon" class="toggle-icon"></i>
       </div>
-      <div class="child-options" *ngIf="item.options?.length && openIndex === i">
+      <div class="child-options" *ngIf="item.options?.length && openIndex === i" @SideBarSlide>
         <ul class="list-unstyled">
-          <li *ngFor="let option of item.options" class="sidebar-options">
+          <li *ngFor="let option of item.options" [routerLink]="option.url" routerLinkActive="active-child"
+            [routerLinkActiveOptions]="{ exact: true }" class="sidebar-options">
             <a [routerLink]="option.url">{{ option.name }}</a>
           </li>
         </ul>

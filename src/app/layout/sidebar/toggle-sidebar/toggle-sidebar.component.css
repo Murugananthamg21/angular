@@ -1,5 +1,8 @@
 .sidebar-item:hover {
-    color: #36f;
+    color: #36f !important;
+    background-color: #3366ff29;
+    border-color: #044be2;
+    border-right: 2px solid #044be2;
 }
 
 .sidebar-aside ul li a {
@@ -7,6 +10,18 @@
     padding: 8px 12px;
     text-decoration: none;
     color: #333;
+}
+
+.active-item {
+    color: #36f;
+    background-color: #3366ff29;
+    border-color: #044be2;
+    border-right: 2px solid #044be2;
+}
+
+.active-child a {
+    color: #0a45f3 !important;
+    font-weight: 500;
 }
 
 .sidebar-aside ul li :hover {
@@ -29,7 +44,7 @@
     padding: 6px 20px;
 }
 
-.toggle-icon{
+.toggle-icon {
     font-size: 25px !important;
 }
 
@@ -48,4 +63,3 @@
     box-shadow: 0.4px 0.4px 4px rgb(219, 219, 219);
     border-radius: 4px;
 }
-

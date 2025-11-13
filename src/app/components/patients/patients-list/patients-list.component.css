@@ -1,4 +1,4 @@
-.custom-filter {
+/* .custom-filter {
     background-color: #3366ff14;
     color: #2563eb;
     border: 1px solid #36f;
@@ -20,9 +20,9 @@
 }
 
 .custom-add {
-    background-color: #00d68f14;
-    color: #00d68f;
-    border: 1px solid #00d68f;
+    background-color: #9c27b014;
+    color: #9c27b0;
+    border: 1px solid #9c27b0;
     padding: 6px 12px;
     border-radius: 4px;
     font-size: 14px;
@@ -35,7 +35,21 @@
 }
 
 .custom-add:hover {
-    background-color: #00d68f29;
-    border-color: #15803d;
-    color: #00d68f;
+    background-color: #9c27b014;
+    border-color: #9c27b0;
+    color: #9c27b0;
+} */
+
+.breadcrumb {
+    margin-bottom: 0;
+    align-items: center;
 }
+
+.breadcrumb-rounded {
+    border-radius: 7px;
+    border: none;
+}
+
+
+
+/* beige */
