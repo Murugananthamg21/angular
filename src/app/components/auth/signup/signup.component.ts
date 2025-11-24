@@ -14,4 +14,5 @@ export class SignupComponent {
   navigaeDashboard() {
     this.router.navigate(['/', 'patients']);
   }
+
 }

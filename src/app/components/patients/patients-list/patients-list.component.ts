@@ -1,30 +1,50 @@
-import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, inject, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { FILTER_SLIDE } from '../../../core/animations/animations';
+import { fadeIn, FILTER_SLIDE, FILTERTOPSLIDE } from '../../../core/animations/animations';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { LayoutToggleService } from '../../../core/services/layout-toggle.service';
+import { MatCardModule } from '@angular/material/card';
+import { TableCardService } from '../../../core/services/tableandcard/table-card.service';
 
 @Component({
   selector: 'app-patients-list',
   standalone: true,
-  imports: [RouterLink, MatTableModule, MatSortModule, MatPaginatorModule, CommonModule, DatePipe, ReactiveFormsModule],
+  imports: [
+    RouterLink,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    CommonModule,
+    DatePipe,
+    ReactiveFormsModule,
+    MatCardModule],
   templateUrl: './patients-list.component.html',
   styleUrl: './patients-list.component.css',
   encapsulation: ViewEncapsulation.None,
-  animations: [FILTER_SLIDE]
+  animations: [fadeIn, FILTERTOPSLIDE],
+  providers: [LayoutToggleService]
 })
 export class PatientsListComponent {
-  filterOpen = false;
+
+  filterOpen = signal(false);
   patientForm!: FormGroup;
   private _liveAnnouncer = inject(LiveAnnouncer);
 
-  constructor(private _fb: FormBuilder) {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(
+    private _fb: FormBuilder,
+    protected _tc: TableCardService<PeriodicElement>,
+    protected _layoutService: LayoutToggleService,
+  ) {
     this.patientForm = this._fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
@@ -34,22 +54,22 @@ export class PatientsListComponent {
     })
   }
 
+  ngOnInit() {
+    this._tc.setData(ELEMENT_DATA);
+  }
+
+  ngAfterViewInit() {
+    this.paginator.page.subscribe(event => this._tc.setPage(event));
+    this.sort.sortChange.subscribe(event => this._tc.setSort(event));
+  }
+
   openFilter() {
-    this.filterOpen = !this.filterOpen;
+    this.filterOpen.update(a => !a);
   }
 
   displayedColumns: string[] = ['patientId', 'name', 'email', 'mobile', 'address', 'date'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-   announceSortChange(sortState: Sort) {
+  announceSortChange(sortState: Sort) {
     if (sortState.direction) {
       this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
     } else {
@@ -60,7 +80,6 @@ export class PatientsListComponent {
   onSubmit() {
     console.log(this.patientForm.valid);
   }
-
 
 }
 

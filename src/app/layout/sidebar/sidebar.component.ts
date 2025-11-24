@@ -19,9 +19,12 @@ export class SidebarComponent implements OnInit {
   sidebarData: SidebarData[] = [];
   activeParentIndex: number | null = null;
 
-  constructor(private _layoutService: LayoutToggleService, private router: Router) { }
+  constructor(private _layoutService: LayoutToggleService, private router: Router) {
+    // this._layoutService.closeSidebaronMobile();
+  }
 
   ngOnInit(): void {
+
     this.sidebarData = MEDICAL_SIDEBAR;
 
     this.router.events

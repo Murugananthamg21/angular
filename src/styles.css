@@ -24,8 +24,8 @@ body {
 
 
 .filter-card {
-    border: none;
-    box-shadow: 0.4px 0.4px 8px rgb(204, 203, 203);
+    border: none !important;
+    border-radius: 0px !important;
 }
 
 .filter-card-row.hide {
@@ -138,6 +138,7 @@ td {
     align-items: center;
     gap: 8px;
     transition: all 0.2s ease;
+    margin-left: 8px;
 }
 
 .custom-filter:hover {
@@ -165,4 +166,10 @@ td {
     background-color: #9c27b014;
     border-color: #9c27b0;
     color: #9c27b0;
+}
+
+.mobile_card{
+    border: 0.6px solid #ebebeb !important;
+    margin: 5px 1px;
+    box-shadow: none !important;
 }

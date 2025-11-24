@@ -35,6 +35,35 @@ export const FILTER_SLIDE = trigger("filter_slide", [
     ])
 ])
 
+export const FILTERTOPSLIDE = trigger("FILTERTOPSLIDE", [
+    transition(':enter', [
+        style({
+            height: '0px',
+            opacity: 0,
+            transform: 'translateY(-15px)'
+        }),
+        animate(
+            '250ms cubic-bezier(0.16, 1, 0.3, 1)',
+            style({
+                height: '*',    
+                opacity: 1,
+                transform: 'translateY(0)'
+            })
+        )
+    ]),
+
+    transition(':leave', [
+        animate(
+            '200ms cubic-bezier(0.4, 0, 1, 1)',
+            style({
+                height: '0px',
+                transform: 'translateY(-15px)'
+            })
+        )
+    ])
+]);
+
+
 export const SideBarSlide = trigger("SideBarSlide", [
     transition(":enter", [
         style({

@@ -24,6 +24,5 @@ export const routes: Routes = [
       },
     ],
   },
-
-  { path: '', redirectTo: 'signup', pathMatch: 'full' },
+  { path: '**', redirectTo: 'signup', pathMatch: 'full' },
 ];
