@@ -6,6 +6,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { LayoutToggleService } from './core/services/layout-toggle.service';
+import { provideHttpClient } from '@angular/common/http';
 
 export function initializeApp(appConfigService: LayoutToggleService) {
   return () => appConfigService.checkScreenSize();
