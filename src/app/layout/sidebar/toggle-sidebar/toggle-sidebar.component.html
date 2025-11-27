@@ -1,9 +1,12 @@
 <div class="sidebar-aside" @SideBarSlide>
   <ul class="list-unstyled">
     <li *ngFor="let item of sidebarData; let i = index" class="sidebar-titles">
-      <div class="sidebar-item text-center py-3 px-3" [ngClass]="{ 'active-item': activeParentIndex === i }"
+      <div class="sidebar-item text-center py-3 px-3 " [ngClass]="{ 'active-item': activeParentIndex === i }"
         (click)="toggleOptions(i);  $event.stopPropagation(); " style="cursor: pointer;">
         <i [class]="item.icon" class="toggle-icon"></i>
+         <div class="title-wrapper">
+          <span>{{item.title}}</span>
+          </div>
       </div>
       <div class="child-options" *ngIf="item.options?.length && openIndex === i" @SideBarSlide>
         <ul class="list-unstyled">

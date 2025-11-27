@@ -24,8 +24,7 @@
 }
 
 .app-toggle-sidebar {
-    /* width: 260px; */
-    width: 90px;
+    width: 120px;
     background-color: white;
     flex-shrink: 0;
 }
@@ -42,7 +41,7 @@
     flex: 1;
     overflow-y: auto;
     background-color: #edf1f7;
-    padding: 20px;
+    padding: 32px;
 }
 
 

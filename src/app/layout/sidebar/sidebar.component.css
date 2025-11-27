@@ -51,6 +51,10 @@
 .sidebar-options-mobile {
     display: none;
 }
+.icon-size{
+    font-size: 12px !important;
+}
+
 
 @media (max-width: 768px) {
     .sidebar-options-mobile {

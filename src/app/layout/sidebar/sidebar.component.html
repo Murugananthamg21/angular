@@ -5,9 +5,9 @@
         [ngClass]="{ 'active-item': activeParentIndex === i }" (click)="toggleOptions(i)" style="cursor: pointer;">
         <i [class]="item.icon"></i>
         <span>{{ item.title }}</span>
-        <i class="ms-auto bi" [ngClass]="{
+        <i class="ms-auto bi icon-size" [ngClass]="{
             'bi-chevron-down': openIndex === i,
-            'bi-chevron-right': openIndex !== i
+            'bi-chevron-left': openIndex !== i
           }"></i>
       </div>
 

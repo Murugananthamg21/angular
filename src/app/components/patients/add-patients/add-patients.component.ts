@@ -16,11 +16,11 @@ export class AddPatientsComponent {
   toggle() { this.isShow.update(a => !a) }
 
 
-  nameControl = new FormControl<string | null>('', Validators.required);
+  nameControl = new FormControl<string | null>('', [Validators.required, Validators.minLength(7)]);
 
   constructor() {
-    this.nameControl.valueChanges.subscribe(value => {
-      console.log("🔥 valueChanges fired:", value);
+    this.nameControl.events.subscribe((event) => {
+      console.log(event);
     });
   }
 }
